@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('dotjs', 'prepares and combines any type of template into a script include', function() {
     // grap the filepattern
-    var files = grunt.file.expand({filter: 'isFile'}, this.files[0].src);
+    var files = grunt.file.expand({filter: 'isFile', cwd: ''}, this.files[0].src);
     // create the hogan include
     var src = GruntDotCompiler.compileTemplates(files, this.data.options);
     // write the new file
@@ -118,13 +118,13 @@ module.exports = function(grunt) {
       }
       else
       {
-          var compile = options.prefix + '\'' + contents + '\'' + options.suffix + ';' + grunt.util.linefeed;
+          var compile = options.prefix + "partials['" + key + "']" + options.suffix + ';' + grunt.util.linefeed;
           if( options.node ) {
             compile = eval( compile );
             console.log(key + ' = ' + compile);
           }
           //var res = ' ' + options.variable + "['" + key + "']=" + compile + grunt.util.linefeed;
-          var res = ' ' + options.variable + "['" + key + "']=" + "partials['" + key + "'];" + grunt.util.linefeed;
+          var res = ' ' + options.variable + "['" + key + "']=" + compile + grunt.util.linefeed;
           
           result.clear.push(res);
           result.html.push("partials['" + key + "'] = '" + contents + "';\n");

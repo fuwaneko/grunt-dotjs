@@ -1,7 +1,7 @@
 {
   "name": "grunt-dotjs",
   "description": "Compiles DoT.js templates with support for partials",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "homepage": "https://github.com/fuwaneko/grunt-dotjs",
   "author": {
     "name": "Dmitry Gorbunov",
@@ -38,7 +38,7 @@
     "grunt": "~0.4.1"
   },
   "peerDependencies": {
-    "grunt": "~0.4.1"
+    "grunt": "~0.4.0"
   },
   "keywords": [
     "gruntplugin"
